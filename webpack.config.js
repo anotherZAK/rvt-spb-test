@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './source/js/main.js',
+  entry: './source/js/calculator.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'source/js'),
