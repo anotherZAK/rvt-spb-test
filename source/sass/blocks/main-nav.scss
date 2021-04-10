@@ -1,16 +1,19 @@
 .main-nav__company {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 3px;
 }
 
 .main-nav__logo {
   margin-right: 74px;
+  min-width: 254px;
 }
 
 .main-nav__form {
+  position: relative;
   display: flex;
+  margin-top: 8px;
   flex-basis: 734px;
-  align-self: center;
+  height: 38px;
   margin-right: 30px;
 }
 
@@ -29,35 +32,95 @@
 }
 
 .main-nav__form-submit {
+  padding-right: 31px;
+  padding-left: 30px;
   background-color: #f8f8f8;
   border: 1px solid rgba(52, 125, 184, 0.15);
   border-radius: 8px 0px 0px 8px;
   cursor: pointer;
   order: -1;
+
+  &:hover {
+    background-color: #4496f6;
+    opacity: 0.1;
+  }
 }
 
-.main-nav__company-add {
-  align-self: center;
+.main-nav__search-icon {
+  position: absolute;
+  top: 10px;
+  left: 23px;
+  fill: #4496f6;
+  cursor: pointer;
+
+  &:hover + .main-nav__form-submit {
+    background-color: #4496f6;
+    opacity: 0.1;
+  }
+}
+
+.main-nav .main-nav__company-add {
+  position: relative;
+  align-self: flex-start;
+  margin-top: 8px;
+  padding-right: 20px;
+  min-width: 181px;
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    top: 19px;
+    right: 8px;
+    width: 8px;
+    height: 2px;
+    background-color: #ffffff;
+  }
+
+  &::after {
+    transform: rotate(90deg);
+  }
 }
 
 .main-nav__list {
   display: flex;
   flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
 .main-nav__item {
-  margin-right: 85px;
+  position: relative;
+  margin-right: 84px;
+
+  &--calc {
+    .main-nav__link {
+      padding-left: 27px;
+    }
+  }
 
   &:last-child {
     margin-right: 0;
   }
+
+  &:hover .main-nav__icon-calculator {
+    fill: #4496f6;
+  }
+}
+
+.main-nav__icon-calculator {
+  position: absolute;
+  top: 6px;
+  left: -2px;
 }
 
 .main-nav__link {
+  padding: 3px 0;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
+  letter-spacing: 0.01em;
   color: #161616;
 
   &:hover {

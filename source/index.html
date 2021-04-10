@@ -23,13 +23,13 @@
           </a>
           <form class="main-nav__form" action="https://echo.htmlacademy.ru/" method="get">
             <label class="visually-hidden" for="main-nav-search-id">Search</label>
-            <input id="main-nav-search-id" type="text" name="main-nav-search" placeholder="Введите название компании">
-            <svg class="main-nav__search-icon" width="14" height="14">
+            <input id="main-nav-search-id" type="text" name="main-nav-search" placeholder="Введите название компании...">
+            <svg class="main-nav__search-icon" width="18" height="18">
               <use xlink:href="img/sprite.svg#icon-search"></use>
             </svg>
             <button class="main-nav__form-submit" type="submit"><span class="visually-hidden">Отправить</span></button>
           </form>
-          <button class="main-nav__company-add btn" type="button">Добавить компанию</button>
+          <button class="btn main-nav__company-add" type="button">Добавить компанию</button>
         </div>
         <ul class="main-nav__list">
           <li class="main-nav__item">
@@ -44,7 +44,7 @@
           <li class="main-nav__item">
             <a class="main-nav__link" href="#">Последние&nbsp;отзывы</a>
           </li>
-          <li class="main-nav__item">
+          <li class="main-nav__item main-nav__item--calc">
             <a class="main-nav__link" href="#"><svg class="main-nav__icon-calculator" width="18" height="18">
                 <use xlink:href="img/sprite.svg#icon-calculator"></use>
               </svg>Калькулятор&nbsp;ремонта</a>
@@ -65,13 +65,13 @@
             <form class="calculator-form">
               <h1>Калькулятор ремонта</h1>
               <div class="calculator-form__submenu calculator-form__submenu--left">
-                <label for="calculator-form-space-type-id">Тип помещения<span>*</span></label>
+                <label for="calculator-form-space-type-id">Тип помещения<span> *</span></label>
                 <select class="calculator-form__item calculator-form__item--space-type"
                   id="calculator-form-space-type-id" name="calculator-form-space-type">
                   <option value="new-building" selected>Новостройка</option>
                   <option value="old-building">Вторичка</option>
                 </select>
-                <label for="calculator-form-electricity-id">Электрика<span>*</span></label>
+                <label for="calculator-form-electricity-id">Электрика<span> *</span></label>
                 <select class="calculator-form__item calculator-form__item--electricity"
                   id="calculator-form-electricity-id" name="calculator-form-electricity">
                   <option value="no-electricity" selected>Нет</option>
@@ -80,20 +80,20 @@
                   <option value="new-electricity">Новая от вводного
                     кабеля</option>
                 </select>
-                <label for="calculator-form-repairs-type-id">Тип ремонта<span>*</span></label>
+                <label for="calculator-form-repairs-type-id">Тип ремонта<span> *</span></label>
                 <select class="calculator-form__item calculator-form__item--repairs-type"
                   id="calculator-form-repairs-type-id" name="calculator-form-repairs-type">
                   <option value="cosmetic" selected>Косметический</option>
                   <option value="major">Капитальный</option>
                   <option value="designing">Дизайнерский</option>
                 </select>
-                <label for="calculator-form-bathroom-repair-id">Ремонт санузла<span>*</span></label>
+                <label for="calculator-form-bathroom-repair-id">Ремонт санузла<span> *</span></label>
                 <select class="calculator-form__item calculator-form__item--bathroom-repair"
                   id="calculator-form-bathroom-repair-id" name="calculator-form-bathroom-repair">
                   <option value="bathroom-repair" selected>Да</option>
                   <option value="bathroom-norepair">Нет</option>
                 </select>
-                <label for="calculator-form-warm-floor-id">Тёплые полы<span>*</span></label>
+                <label for="calculator-form-warm-floor-id">Тёплые полы<span> *</span></label>
                 <select class="calculator-form__item calculator-form__item--warm-floor"
                   id="calculator-form-warm-floor-id" name="calculator-form-warm-floor">
                   <option value="warm-floor" selected>Да</option>
@@ -103,10 +103,14 @@
                 <input class="calculator-form__item calculator-form__item--doors" id="calculator-form-doors-id" type="number" name="calculator-form-doors" value="5">
               </div>
               <div class="calculator-form__submenu calculator-form__submenu--right">
-                <label for="calculator-form-repairs-area-id">Площадь ремонта<span>*</span></label>
+                <div class="slider">
+                <label for="calculator-form-repairs-area-id">Площадь ремонта<span> *</span></label>
                 <input class="calculator-form__item calculator-form__item--repairs-area"
-                  id="calculator-form-repairs-area-id" type="number" name="calculator-form-repairs-area" value="42">
-                <label for="calculator-form-walls-perimeter-id">Общий периметр стен<span>*</span></label>
+                  id="calculator-form-repairs-area-id" type="text" name="calculator-form-repairs-area" value="42">
+                  <div class="slider__repairs-area"></div>
+                    <div class="slider__pointer"></div>
+                  </div>
+                <label for="calculator-form-walls-perimeter-id">Общий периметр стен<span> *</span></label>
                 <input class="calculator-form__item calculator-form__item--walls-perimeter"
                   id="calculator-form-walls-perimeter-id" type="number" name="calculator-form-walls-perimeter" value="50">
                 <label for="calculator-form-roof-id">Потолки<span>*</span></label>
@@ -118,12 +122,12 @@
                   <option value="2xgypsum-roof">2-го уровня гипсокартон
                   </option>
                 </select>
-                <label for="calculator-form-bathroom-area-id">Площадь санузла<span>*</span></label>
+                <label for="calculator-form-bathroom-area-id">Площадь санузла<span> *</span></label>
                 <input class="calculator-form__item calculator-form__item--bathroom-area"
                   id="calculator-form-bathroom-area-id" type="number" name="calculator-form-bathroom-area" value="42">
                 <input class="calculator-form__item calculator-form__item--input-door visually-hidden"
                   id="calculator-form-input-door-id" type="checkbox" name="calculator-form-input-door">
-                  <label for="calculator-form-input-door-id">Входная дверь<span>*</span></label>
+                  <label for="calculator-form-input-door-id">Входная дверь<span> *</span></label>
               </div>
             </form>
             <div class="calculator__result">
@@ -135,7 +139,7 @@
             </div>
           </section>
           <aside class="best-companies">
-            <h2>Лучшие компании по дизайну интерьеров</h2>
+            <h2>Лучшие компании<br> по дизайну интерьеров</h2>
             <dl class="best-companies__list">
               <dt class="best-companies__name">Строй Комплект Сервис</dt>
               <dd class="best-companies__score"><span>2700</span> баллов</dd>

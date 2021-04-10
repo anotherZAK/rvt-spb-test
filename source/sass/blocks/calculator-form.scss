@@ -1,13 +1,16 @@
 .calculator-form {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding-top: 40px;
+  padding-top: 37px;
   padding-left: 50px;
   background-color: #ffffff;
+  border-radius: 5px 5px 0 0;
 }
 
 .calculator-form h1 {
   margin: 0;
+  margin-bottom: 25px;
   font-weight: 700;
   font-size: 22px;
   line-height: 27px;
@@ -15,6 +18,7 @@
 
 .calculator-form label {
   display: block;
+  margin-bottom: 4px;
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
@@ -34,12 +38,12 @@
 .calculator-form select,
 .calculator-form input {
   margin: 0;
-  margin-bottom: 33px;
+  margin-bottom: 32px;
   padding-top: 13px;
   padding-bottom: 13px;
   padding-left: 17px;
   min-width: 318px;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 24px;
   letter-spacing: 0.05em;
   color: #666666;
@@ -51,6 +55,20 @@
 
 .calculator-form select {
   appearance: none;
+}
+
+.calculator-form .calculator-form__item--space-type,
+.calculator-form .calculator-form__item--repairs-area,
+.calculator-form .calculator-form__item--walls-perimeter,
+.calculator-form .calculator-form__item--bathroom-area,
+.calculator-form.calculator-form__item--input-door {
+  font-size: 18px;
+}
+
+.calculator-form .calculator-form__item--electricity,
+.calculator-form .calculator-form__item--repairs-type,
+.calculator-form .calculator-form__item--warm-floor {
+  margin-bottom: 22px;
 }
 
 .calculator-form__item--input-door + label {

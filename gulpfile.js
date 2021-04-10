@@ -96,7 +96,7 @@ const configSprite = {
 };
 
 gulp.task('svg-sprite', (cb) => {
-  return gulp.src('source/img/svg-2-sprite/*.svg')
+  return gulp.src('source/img/svg-sprite/*.svg')
     .pipe(svgSprite(configSprite))
     .pipe(svgclear({
       run: function ($) {
