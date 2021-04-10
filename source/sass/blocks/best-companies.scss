@@ -1,0 +1,38 @@
+.best-companies {
+  margin-top: 20px;
+  padding-top: 11px;
+  padding-right: 24px;
+  padding-bottom: 34px;
+  padding-left: 65px;
+  background-color: #ffffff;
+}
+
+.best-companies h2 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: center;
+  color: #000000;
+}
+
+.best-companies__list {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  row-gap: 41px;
+}
+
+.best-companies__name {
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.best-companies__score {
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.best-companies__score span {
+  font-weight: 700;
+  color: #4496f6;
+}

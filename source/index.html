@@ -14,7 +14,7 @@
   <header class="page-header">
     <div class="container-edge">
       <nav class="main-nav main-nav--closed main-nav--nojs">
-        <div>
+        <div class="main-nav__company">
           <button class="burger" type="button">
             <span class="visually-hidden">Переключить меню</span>
           </button>
@@ -27,9 +27,9 @@
             <svg class="main-nav__search-icon" width="14" height="14">
               <use xlink:href="img/sprite.svg#icon-search"></use>
             </svg>
-            <button class="main-nav__form-submit" type="submit"></button>
+            <button class="main-nav__form-submit" type="submit"><span class="visually-hidden">Отправить</span></button>
           </form>
-          <button class="main-nav__company-add" type="button">Добавить компанию</button>
+          <button class="main-nav__company-add btn" type="button">Добавить компанию</button>
         </div>
         <ul class="main-nav__list">
           <li class="main-nav__item">
@@ -56,114 +56,117 @@
   <main>
     <div class="container-background">
       <div class="container-edge">
-        <section class="calculator">
-          <p>Воспользуйтесь нашим кальулятором, чтобы проссчитать примерную стоимость вашего ремонта. Калькулятор
-            считает среднюю цену на основе прайсов всех предствленных в рейтинге компаний. Не стоит доверять компаниям,
-            которые указывают цену от 1500 за квадратный метр...</p>
-          <form class="calculator-form">
-            <h1>Калькулятор ремонта</h1>
-            <div>
-              <label for="calculator-form-space-type-id">Тип помещения</label>
-              <select class="calculator-form__item calculator-form__item--space-type" id="calculator-form-space-type-id"
-                name="calculator-form-space-type">
-                <option value="new-building" selected>Новостройка</option>
-                <option value="old-building">Вторичка</option>
-              </select>
-              <label for="calculator-form-electricity-id">Электрика</label>
-              <select class="calculator-form__item calculator-form__item--electricity"
-                id="calculator-form-electricity-id" name="calculator-form-electricity">
-                <option value="no-electricity" selected>Нет</option>
-                <option value="change-electricity">Частичная замена и
-                  подключение</option>
-                <option value="new-electricity">Новая от вводного
-                  кабеля</option>
-              </select>
-              <label for="calculator-form-repairs-type-id">Тип ремонта</label>
-              <select class="calculator-form__item calculator-form__item--repairs-type"
-                id="calculator-form-repairs-type-id" name="calculator-form-repairs-type">
-                <option value="cosmetic" selected>Косметический</option>
-                <option value="major">Капитальный</option>
-                <option value="designing">Дизайнерский</option>
-              </select>
-              <label for="calculator-form-bathroom-repair-id">Ремонт санузла</label>
-              <select class="calculator-form__item calculator-form__item--bathroom-repair"
-                id="calculator-form-bathroom-repair-id" name="calculator-form-bathroom-repair">
-                <option value="bathroom-repair" selected>Да</option>
-                <option value="bathroom-norepair">Нет</option>
-              </select>
-              <label for="calculator-form-warm-floor-id">Тёплые полы</label>
-              <select class="calculator-form__item calculator-form__item--warm-floor" id="calculator-form-warm-floor-id"
-                name="calculator-form-warm-floor">
-                <option value="warm-floor" selected>Да</option>
-                <option value="nowarm-floor">Нет</option>
-              </select>
-              <label for="calculator-form-doors-id">Двери</label>
-              <input id="calculator-form-doors-id" type="text" name="calculator-form-doors" value="Нет">
+        <div class="container-grid">
+          <section class="calculator">
+            <p>Воспользуйтесь нашим калькулятором, чтобы проссчитать примерную стоимость вашего ремонта. Калькулятор
+              считает среднюю цену на основе прайсов всех предствленных в рейтинге компаний. Не стоит доверять
+              компаниям,
+              которые указывают цену от 1500 за квадратный метр...</p>
+            <form class="calculator-form">
+              <h1>Калькулятор ремонта</h1>
+              <div class="calculator-form__submenu calculator-form__submenu--left">
+                <label for="calculator-form-space-type-id">Тип помещения<span>*</span></label>
+                <select class="calculator-form__item calculator-form__item--space-type"
+                  id="calculator-form-space-type-id" name="calculator-form-space-type">
+                  <option value="new-building" selected>Новостройка</option>
+                  <option value="old-building">Вторичка</option>
+                </select>
+                <label for="calculator-form-electricity-id">Электрика<span>*</span></label>
+                <select class="calculator-form__item calculator-form__item--electricity"
+                  id="calculator-form-electricity-id" name="calculator-form-electricity">
+                  <option value="no-electricity" selected>Нет</option>
+                  <option value="change-electricity">Частичная замена и
+                    подключение</option>
+                  <option value="new-electricity">Новая от вводного
+                    кабеля</option>
+                </select>
+                <label for="calculator-form-repairs-type-id">Тип ремонта<span>*</span></label>
+                <select class="calculator-form__item calculator-form__item--repairs-type"
+                  id="calculator-form-repairs-type-id" name="calculator-form-repairs-type">
+                  <option value="cosmetic" selected>Косметический</option>
+                  <option value="major">Капитальный</option>
+                  <option value="designing">Дизайнерский</option>
+                </select>
+                <label for="calculator-form-bathroom-repair-id">Ремонт санузла<span>*</span></label>
+                <select class="calculator-form__item calculator-form__item--bathroom-repair"
+                  id="calculator-form-bathroom-repair-id" name="calculator-form-bathroom-repair">
+                  <option value="bathroom-repair" selected>Да</option>
+                  <option value="bathroom-norepair">Нет</option>
+                </select>
+                <label for="calculator-form-warm-floor-id">Тёплые полы<span>*</span></label>
+                <select class="calculator-form__item calculator-form__item--warm-floor"
+                  id="calculator-form-warm-floor-id" name="calculator-form-warm-floor">
+                  <option value="warm-floor" selected>Да</option>
+                  <option value="nowarm-floor">Нет</option>
+                </select>
+                <label for="calculator-form-doors-id">Двери<span>*</span></label>
+                <input id="calculator-form-doors-id" type="text" name="calculator-form-doors" value="Нет">
+              </div>
+              <div class="calculator-form__submenu calculator-form__submenu--right">
+                <label for="calculator-form-repairs-area-id">Площадь ремонта<span>*</span></label>
+                <input class="calculator-form__item calculator-form__item--repairs-area"
+                  id="calculator-form-repairs-area-id" type="text" name="calculator-form-repairs-area" value="42">
+                <label for="calculator-form-walls-perimeter-id">Общий периметр стен<span>*</span></label>
+                <input class="calculator-form__item calculator-form__item--walls-perimeter"
+                  id="calculator-form-walls-perimeter-id" type="text" name="calculator-form-walls-perimeter" value="50">
+                <label for="calculator-form-roof-id">Тёплые полы<span>*</span></label>
+                <select class="calculator-form__item calculator-form__item--roof" id="calculator-form-roof-id"
+                  name="calculator-form-roof">
+                  <option value="noroof" selected>Нет</option>
+                  <option value="gypsum-floor">Гипсокартон</option>
+                  <option value="ceiling-floor">Натяжной</option>
+                  <option value="2xgypsum-floor">2-го уровня гипсокартон
+                  </option>
+                </select>
+                <label for="calculator-form-bathroom-area-id">Площадь санузла<span>*</span></label>
+                <input class="calculator-form__item calculator-form__item--bathroom-area"
+                  id="calculator-form-bathroom-area-id" type="text" name="calculator-form-bathroom-area" value="42">
+                <input class="calculator-form__item calculator-form__item--input-door visually-hidden"
+                  id="calculator-form-input-door-id" type="checkbox" name="calculator-form-input-door">
+                  <label for="calculator-form-input-door-id">Входная дверь<span>*</span></label>
+              </div>
+            </form>
+            <div class="calculator__result">
+              <div class="calculator__result-block">
+                <h2>Стоимость вашего ремонта</h2>
+                <p>Итого: <span>0 руб.</span></p>
+              </div>
+              <p>*Напоминаем, что это примерная стоимость</p>
             </div>
-            <div>
-              <label for="calculator-form-repairs-area-id">Площадь ремонта</label>
-              <input class="calculator-form__item calculator-form__item--repairs-area"
-                id="calculator-form-repairs-area-id" type="text" name="calculator-form-repairs-area" value="42">
-              <label for="calculator-form-walls-perimeter-id">Общий периметр стен</label>
-              <input class="calculator-form__item calculator-form__item--walls-perimeter"
-                id="calculator-form-walls-perimeter-id" type="text" name="calculator-form-walls-perimeter" value="50">
-              <label for="calculator-form-roof-id">Тёплые полы</label>
-              <select class="calculator-form__item calculator-form__item--roof" id="calculator-form-roof-id"
-                name="calculator-form-roof">
-                <option value="noroof" selected>Нет</option>
-                <option value="gypsum-floor">Гипсокартон</option>
-                <option value="ceiling-floor">Натяжной</option>
-                <option value="2xgypsum-floor">2-го уровня гипсокартон
-                </option>
-              </select>
-              <label for="calculator-form-bathroom-area-id">Площадь санузла</label>
-              <input class="calculator-form__item calculator-form__item--bathroom-area"
-                id="calculator-form-bathroom-area-id" type="text" name="calculator-form-bathroom-area" value="42">
-              <label for="calculator-form-input-door-id">Входная дверь</label>
-              <input class="calculator-form__item calculator-form__item--input-door" id="calculator-form-input-door-id"
-                type="checkbox" name="calculator-form-input-door">
-            </div>
-          </form>
-          <div class="calculation__result">
-            <div>
-              <h2>Стоимость вашего ремонта</h2>
-              <p></p>
-            </div>
-            <p>*Напоминаем, что это примерная стоимость</p>
-          </div>
-        </section>
-        <aside class="best-companies">
-          <h2>Лучшие компании по дизайну интерьеров</h2>
-          <dl class="best-companies__list">
-            <dt class="best-companies__name">Строй Комплект Сервис</dt>
-            <dd class="best-companies__score">2700</dd>
-            <dt class="best-companies__name">Строй Комплект Сервис</dt>
-            <dd class="best-companies__score">2700</dd>
-            <dt class="best-companies__name">Строй Комплект Сервис</dt>
-            <dd class="best-companies__score">2700</dd>
-            <dt class="best-companies__name">Строй Комплект Сервис</dt>
-            <dd class="best-companies__score">2700</dd>
-            <dt class="best-companies__name">Строй Комплект Сервис</dt>
-            <dd class="best-companies__score">2700</dd>
-            <dt class="best-companies__name">Строй Комплект Сервис</dt>
-            <dd class="best-companies__score">2700</dd>
-            <dt class="best-companies__name">Строй Комплект Сервис</dt>
-            <dd class="best-companies__score">2700</dd>
-            <dt class="best-companies__name">Строй Комплект Сервис</dt>
-            <dd class="best-companies__score">2700</dd>
-            <dt class="best-companies__name">Строй Комплект Сервис</dt>
-            <dd class="best-companies__score">2700</dd>
-            <dt class="best-companies__name">Строй Комплект Сервис</dt>
-            <dd class="best-companies__score">2700</dd>
-          </dl>
-        </aside>
+          </section>
+          <aside class="best-companies">
+            <h2>Лучшие компании по дизайну интерьеров</h2>
+            <dl class="best-companies__list">
+              <dt class="best-companies__name">Строй Комплект Сервис</dt>
+              <dd class="best-companies__score"><span>2700</span> баллов</dd>
+              <dt class="best-companies__name">Строй Комплект Сервис</dt>
+              <dd class="best-companies__score"><span>2700</span> баллов</dd>
+              <dt class="best-companies__name">Строй Комплект Сервис</dt>
+              <dd class="best-companies__score"><span>2700</span> баллов</dd>
+              <dt class="best-companies__name">Строй Комплект Сервис</dt>
+              <dd class="best-companies__score"><span>2700</span> баллов</dd>
+              <dt class="best-companies__name">Строй Комплект Сервис</dt>
+              <dd class="best-companies__score"><span>2700</span> баллов</dd>
+              <dt class="best-companies__name">Строй Комплект Сервис</dt>
+              <dd class="best-companies__score"><span>2700</span> баллов</dd>
+              <dt class="best-companies__name">Строй Комплект Сервис</dt>
+              <dd class="best-companies__score"><span>2700</span> баллов</dd>
+              <dt class="best-companies__name">Строй Комплект Сервис</dt>
+              <dd class="best-companies__score"><span>2700</span> баллов</dd>
+              <dt class="best-companies__name">Строй Комплект Сервис</dt>
+              <dd class="best-companies__score"><span>2700</span> баллов</dd>
+              <dt class="best-companies__name">Строй Комплект Сервис</dt>
+              <dd class="best-companies__score"><span>2700</span> баллов</dd>
+            </dl>
+          </aside>
+        </div>
       </div>
     </div>
   </main>
   <footer class="page-footer">
 
   </footer>
-<script src="js/bundle.js"></script>
+  <script src="js/bundle.js"></script>
 </body>
 
 </html>
