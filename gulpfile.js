@@ -25,7 +25,7 @@ gulp.task('css', () => {
     .pipe(postcss([autoprefixer()]))
     .pipe(rename('style.css'))
     .pipe(sourcemap.write('.'))
-    .pipe(gulp.dest('build/css'));
+    .pipe(gulp.dest('docs/css'));
 });
 
 gulp.task('css-min', () => {
@@ -37,13 +37,13 @@ gulp.task('css-min', () => {
     .pipe(csso())
     .pipe(rename('style.min.css'))
     .pipe(sourcemap.write('.'))
-    .pipe(gulp.dest('build/css'))
+    .pipe(gulp.dest('docs/css'))
     .pipe(server.stream());
 });
 
 gulp.task('server', () => {
   server.init({
-    server: 'build/',
+    server: 'docs/',
     notify: false,
     open: true,
     cors: true,
@@ -108,7 +108,7 @@ gulp.task('svg-sprite', (cb) => {
       },
     }))
     .pipe(rename('sprite.svg'))
-    .pipe(gulp.dest('build/img'));
+    .pipe(gulp.dest('docs/img'));
 });
 
 gulp.task('html', () => {
@@ -116,7 +116,7 @@ gulp.task('html', () => {
     .pipe(posthtml([
       include(),
     ]))
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('docs'));
 });
 
 gulp.task('copy', () => {
@@ -130,11 +130,11 @@ gulp.task('copy', () => {
   ], {
     base: 'source',
   })
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('docs'));
 });
 
 gulp.task('clean', () => {
-  return del('build');
+  return del('docs');
 });
 
 gulp.task('build', gulp.series('clean', 'copy', 'css-min', 'css', 'svg-sprite', 'html'));

@@ -37,8 +37,8 @@
 
 .calculator__result-block {
   flex-basis: 457px;
-  margin-right: 38px;
-  padding-top: 24px;
+  margin-right: 39px;
+  padding-top: 22px;
   padding-bottom: 29px;
   padding-left: 49px;
   background-color: #347db8;
@@ -46,11 +46,18 @@
 
 .calculator__result-block h2 {
   margin: 0;
-  margin-bottom: 25px;
+  margin-bottom: 12px;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
   color: #ffffff;
+}
+
+.calculator__result p {
+  flex-basis: 191px;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 22px;
 }
 
 .calculator__result-block p {
@@ -66,9 +73,11 @@
   line-height: 45px;
 }
 
-.calculator__result p {
-  flex-basis: 191px;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 22px;
+.calculator__cost {
+  margin-left: 19px;
+}
+
+.calculator__result-block + p {
+  margin: 0;
+  margin-top: -17px;
 }
