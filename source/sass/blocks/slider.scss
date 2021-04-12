@@ -1,0 +1,25 @@
+.slider {
+  position: relative;
+}
+
+.slider__repairs-area,
+.slider__bathroom-area {
+  position: absolute;
+  width: 42px;
+  height: 1px;
+  top: 71px;
+  left: 6px;
+  background-color: red;
+}
+
+.slider__pointer {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 61px;
+  left: 39px;
+  border: 1px solid red;
+  border-radius: 50%;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}

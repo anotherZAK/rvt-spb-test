@@ -21,9 +21,5 @@ trim_trailing_whitespace = true
 [*.md]
 trim_trailing_whitespace = false
 
-[*main.js]
-insert_final_newline = false
-
-[*vendors.js]
-trim_trailing_whitespace = false
+[*bundle.js]
 insert_final_newline = false

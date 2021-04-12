@@ -27,7 +27,7 @@
   font-family: $main-font;
   background: #fafafa;
   border: 1px solid rgba(52, 125, 184, 0.1);
-  border-radius: 0px 8px 8px 0px;
+  border-radius: 0 8px 8px 0;
   color: #717171;
 }
 
@@ -36,7 +36,7 @@
   padding-left: 30px;
   background-color: #f8f8f8;
   border: 1px solid rgba(52, 125, 184, 0.15);
-  border-radius: 8px 0px 0px 8px;
+  border-radius: 8px 0 0 8px;
   cursor: pointer;
   order: -1;
 

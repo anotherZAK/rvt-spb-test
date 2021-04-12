@@ -7,8 +7,6 @@ const BATHROOM_AREA_MAX = 20;
 const DOORS_MIN = 1;
 const DOORS_MAX = 20;
 const COST_PER_DOOR = 8500;
-const WALLS_PERIMETR_MIN = 1;
-const WALLS_PERIMETR_MAX = 5000;
 const INPUT_DOOR_PERCENT = 0.05;
 
 const spaceTypes = {
@@ -54,37 +52,41 @@ const bathroomRepairInput = document.querySelector('.calculator-form__item--bath
 const warmFloorRepairInput = document.querySelector('.calculator-form__item--warm-floor');
 const doorsInput = document.querySelector('.calculator-form__item--doors');
 const repairsAreaInput = document.querySelector('.calculator-form__item--repairs-area');
-const wallsPerimeterInput = document.querySelector('.calculator-form__item--walls-perimeter');
+
 const roofInput = document.querySelector('.calculator-form__item--roof');
 const bathroomAreaInput = document.querySelector('.calculator-form__item--bathroom-area');
 const inputDoor = document.querySelector('.calculator-form__item--input-door');
+const slideArea = document.querySelector('.slider--area');
+const slideBathroom = document.querySelector('.slider--bathroom');
+const sliderPointArea = slideArea.querySelector('.slider__pointer--repairs-area');
+const sliderPointBathroom = slideBathroom.querySelector('.slider__pointer--bathroom');
+const sliderArea = slideArea.querySelector('.slider__repairs-area');
+const sliderBathroomArea = slideBathroom.querySelector('.slider__bathroom-area');
 
 let spaceTypeCost = spaceTypes[spaceTypeInput.value];
 let electricityCost = electricityTypes[electricityInput.value];
 let repairsTypesCost = repairsTypes[repairsTypesInput.value];
-let bathroomRepairCost =  isBathroomRepair[bathroomRepairInput.value];
+let bathroomRepairCost = isBathroomRepair[bathroomRepairInput.value];
 let warmFloorRepairCost = isWarmFloor[warmFloorRepairInput.value];
 let roofTypesCost = roofTypes[roofInput.value];
 let doorsNumber = Number(doorsInput.value);
-let areaRepairs = Number(repairsAreaInput.value);
-let wallsPerimeter = Number(wallsPerimeterInput.value);
-let bathroomArea = Number(bathroomAreaInput.value);
+let sliderAreaRepairs = parseInt(repairsAreaInput.value);
+let sliderbathroomAreaRepairs = parseInt(bathroomAreaInput.value);
 
 /**
  * Вычисляет стоимость ремонта
  * @returns {number} - стоимость ремонта
  */
 const calculateResultCost = () => {
-  let result = spaceTypeCost * areaRepairs +
-  electricityCost * areaRepairs +
-  repairsTypesCost * areaRepairs +
-  bathroomRepairCost * bathroomArea +
-  warmFloorRepairCost * areaRepairs +
-  COST_PER_DOOR * doorsNumber +
-  wallsPerimeter +
-  roofTypesCost * areaRepairs;
+  let result = spaceTypeCost * sliderAreaRepairs +
+    electricityCost * sliderAreaRepairs +
+    repairsTypesCost * sliderAreaRepairs +
+    bathroomRepairCost * sliderbathroomAreaRepairs +
+    warmFloorRepairCost * sliderAreaRepairs +
+    COST_PER_DOOR * doorsNumber +
+    roofTypesCost * sliderAreaRepairs;
 
-  result = inputDoor.checked ? result + INPUT_DOOR_PERCENT * result  : result;
+  result = inputDoor.checked ? result + INPUT_DOOR_PERCENT * result : result;
   return `${result.toFixed()} руб.`;
 };
 
@@ -128,20 +130,13 @@ const roofInputHandler = () => {
 };
 
 const repairsAreaInputHandler = () => {
-  if (!repairsAreaInput.value || Number(repairsAreaInput.value) === 0) {
-    repairsAreaInput.value = '';
-    areaRepairs = 0;
-    repairsAreaInput.setCustomValidity(`Минимальное знаение - ${AREA_MIN}`);
-  } else if (repairsAreaInput.value > AREA_MAX) {
-    repairsAreaInput.value = AREA_MAX;
-    areaRepairs = AREA_MAX;
-    repairsAreaInput.setCustomValidity(`Максимальное знаение - ${AREA_MAX}`);
-  } else {
-    areaRepairs = Number(repairsAreaInput.value);
-    repairsAreaInput.setCustomValidity('');
-  }
+  sliderAreaRepairs = parseInt(repairsAreaInput.value);
   renderResultCost();
-  repairsAreaInput.reportValidity();
+};
+
+const bathroomAreaInputHandler = () => {
+  sliderbathroomAreaRepairs = parseInt(bathroomAreaInput.value);
+  renderResultCost();
 };
 
 const doorsInputHandler = () => {
@@ -161,38 +156,82 @@ const doorsInputHandler = () => {
   doorsInput.reportValidity();
 };
 
-const wallsPerimeterInputHandler = () => {
-  if (!wallsPerimeterInput.value || Number(wallsPerimeterInput.value) === 0) {
-    wallsPerimeterInput.value = '';
-    wallsPerimeter = 0;
-    wallsPerimeterInput.setCustomValidity(`Минимальное знаение - ${WALLS_PERIMETR_MIN}`);
-  } else if (wallsPerimeterInput.value > WALLS_PERIMETR_MAX) {
-    wallsPerimeterInput.value = WALLS_PERIMETR_MAX;
-    wallsPerimeter = WALLS_PERIMETR_MAX;
-    wallsPerimeterInput.setCustomValidity(`Максимальное знаение - ${WALLS_PERIMETR_MAX}`);
-  } else {
-    wallsPerimeter = Number(wallsPerimeterInput.value);
-    wallsPerimeterInput.setCustomValidity('');
-  }
-  renderResultCost();
-  wallsPerimeterInput.reportValidity();
+const sliderPointAreaHandler = (evt) => {
+  slideArea.append(sliderPointArea);
+
+  const shiftX = evt.clientX - sliderPointArea.getBoundingClientRect().left;
+
+  const checkBorder = (borderX) => {
+    if (borderX < -4) {
+      sliderPointArea.style.left = `${-4}px`;
+      sliderArea.style.width = `${-4}px`;
+      repairsAreaInput.value = `${AREA_MIN} кв. м`;
+    } else if (borderX > 299) {
+      sliderPointArea.style.left = `${299}px`;
+      sliderArea.style.width = `${299}px`;
+      repairsAreaInput.value = `${AREA_MAX} кв. м`;
+    } else {
+      sliderPointArea.style.left = `${borderX}px`;
+      sliderArea.style.width = `${borderX}px`;
+      repairsAreaInput.value = `${((borderX + 5 ) * AREA_MAX / 304).toFixed()} кв. м`;
+    }
+  };
+
+  const moveAt = (pageX) => {
+    const currentX = pageX - shiftX - slideArea.getBoundingClientRect().left;
+    checkBorder(currentX);
+    repairsAreaInputHandler();
+  };
+
+  moveAt(evt.pageX);
+
+  const onMouseMove = (evt) => {
+    moveAt(evt.pageX);
+  };
+
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseup', () => {
+    document.removeEventListener('mousemove', onMouseMove);
+  });
 };
 
-const bathroomAreaInputHandler = () => {
-  if (!bathroomAreaInput.value || Number(bathroomAreaInput.value) === 0) {
-    bathroomAreaInput.value = '';
-    bathroomArea = 0;
-    bathroomAreaInput.setCustomValidity(`Минимальное знаение - ${BATHROOM_AREA_MIN}`);
-  } else if (bathroomAreaInput.value > BATHROOM_AREA_MAX) {
-    bathroomAreaInput.value = BATHROOM_AREA_MAX;
-    bathroomArea = BATHROOM_AREA_MAX;
-    bathroomAreaInput.setCustomValidity(`Максимальное знаение - ${BATHROOM_AREA_MAX}`);
-  } else {
-    bathroomArea = Number(bathroomAreaInput.value);
-    bathroomAreaInput.setCustomValidity('');
-  }
-  renderResultCost();
-  bathroomAreaInput.reportValidity();
+const sliderPointBathroomHandler = (evt) => {
+  slideBathroom.append(sliderPointBathroom);
+
+  const shiftX = evt.clientX - sliderPointBathroom.getBoundingClientRect().left;
+
+  const checkBorder = (borderX) => {
+    if (borderX < -4) {
+      sliderPointBathroom.style.left = `${-4}px`;
+      sliderBathroomArea.style.width = `${-4}px`;
+      bathroomAreaInput.value = `${BATHROOM_AREA_MIN} кв. м`;
+    } else if (borderX > 299) {
+      sliderPointBathroom.style.left = `${299}px`;
+      sliderBathroomArea.style.width = `${299}px`;
+      bathroomAreaInput.value = `${BATHROOM_AREA_MAX} кв. м`;
+    } else {
+      sliderPointBathroom.style.left = `${borderX}px`;
+      sliderBathroomArea.style.width = `${borderX}px`;
+      bathroomAreaInput.value = `${((borderX + BATHROOM_AREA_MAX) * BATHROOM_AREA_MAX / 24 / 13).toFixed()} кв. м`;
+    }
+  };
+
+  const moveAt = (pageX) => {
+    const currentX = pageX - shiftX - slideBathroom.getBoundingClientRect().left;
+    checkBorder(currentX);
+    bathroomAreaInputHandler();
+  };
+
+  moveAt(evt.pageX);
+
+  const onMouseMove = (evt) => {
+    moveAt(evt.pageX);
+  };
+
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseup', () => {
+    document.removeEventListener('mousemove', onMouseMove);
+  });
 };
 
 spaceTypeInput.addEventListener('change', spaceTypeInputHandler);
@@ -201,10 +240,19 @@ repairsTypesInput.addEventListener('change', repairsTypesInputHandler);
 bathroomRepairInput.addEventListener('change', bathroomRepairInputHandler);
 warmFloorRepairInput.addEventListener('change', warmFloorInputHandler);
 doorsInput.addEventListener('input', doorsInputHandler);
-repairsAreaInput.addEventListener('input', repairsAreaInputHandler);
-wallsPerimeterInput.addEventListener('input', wallsPerimeterInputHandler);
+
 roofInput.addEventListener('change', roofInputHandler);
-bathroomAreaInput.addEventListener('input', bathroomAreaInputHandler);
+
 inputDoor.addEventListener('change', () => {
   renderResultCost();
+});
+
+sliderPointArea.addEventListener('mousedown', sliderPointAreaHandler);
+sliderPointArea.addEventListener('dragstart', () => {
+  return false;
+});
+
+sliderPointBathroom.addEventListener('mousedown', sliderPointBathroomHandler);
+sliderPointBathroom.addEventListener('dragstart', () => {
+  return false;
 });
